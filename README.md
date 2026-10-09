@@ -1,7 +1,7 @@
 # Antivirus Daemon and Restore Tool
 
 ## 1. Overview and Folder Hierarchy
-This project implements a background antivirus daemon and an interactive restore menu. The daemon continuously monitors a specified directory for potentially malicious files, automatically moving them to a quarantine folder.
+This project implements an antivirus daemon and an interactive restore menu. The daemon continuously monitors a specified directory for malicious files, automatically moving them to a quarantine folder.
 
 **Folder Hierarch:**
 * `antivirusd.sh`: The background monitoring script.
