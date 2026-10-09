@@ -26,20 +26,20 @@ Run the following command in your terminal:
 ```bash
 make run-antivirus
 ```
-*This automatically creates the `malicious_dir` if it is missing and starts monitoring the `dir` folder every 3 seconds.*
+This automatically creates the `malicious_dir` if it is missing and starts monitoring the `dir` folder every 3 seconds.
 
 **Step 2: Launch the Restore Menu**
 Run the following command in your terminal:
 ```bash
 make run-restore
 ```
-*This opens an interactive menu allowing you to restore files back to `dir`, permanently delete them, or leave them in quarantine.*
+This opens an interactive menu allowing you to restore files back to `dir`, permanently delete them, or leave them in quarantine.
 
 ## 4. Location of Flagged-Extensions and Flagged-Keywords
 The required flagged-extensions and flagged-keywords lists are defined inside the code of the `antivirusd.sh` script. 
 
 * **Flagged-Extensions:** Defined as an array inside `antivirusd.sh` (checking for `.exe`, `.bat`, `.ps1`, `.vbs`, `.scr`).
-* **Flagged-Keywords:** Defined as an array near the very top of `antivirusd.sh` (checking for `malware`, `virus`, `trojan`, `worm`, `ransomware`).
+* **Flagged-Keywords:** Defined as an array inside `antivirusd.sh` (checking for `malware`, `virus`, `trojan`, `worm`, `ransomware`).
 
 
 
