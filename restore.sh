@@ -23,6 +23,7 @@ while true; do
 			read -p "Enter your choice from 1 to 3: " choice
 			if [ "$choice" -eq 1 ]; then
 				mv "$filepath" "$dir/"
+				echo "$filename" >> /home/os/9432-lab2/whitelist.txt
 				echo "Restored $filename to $dir."
 				break
 			elif [ "$choice" -eq 2 ]; then

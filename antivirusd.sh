@@ -6,6 +6,17 @@ scan_directory(){
 	for file in "$dir"/*; do
 		if [ -f "$file" ]; then
 			filename=$(basename "$file")
+			is_whitelisted=0
+                	while read -r line; do
+                   		 if [[ "$filename" == "$line" ]]; then
+                       			 is_whitelisted=1
+                       			 break
+                    		fi
+                	done < "/home/os/9432-lab2/whitelist.txt"
+
+                	if [ $is_whitelisted -eq 1 ]; then
+                    		continue
+                	fi
             		is_malicious=0
 			if [[ "$file" == *.exe || "$file" == *.bat || "$file" == *.vbs || "$file" == *.scr || "$file" == *.ps1 ]]; then
 				is_malicious=1

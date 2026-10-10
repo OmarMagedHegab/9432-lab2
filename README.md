@@ -59,6 +59,16 @@ The required flagged-extensions and flagged-keywords lists are defined inside th
 If you want to use this schedule instead of the 1-minute interval, run `crontab -e` and replace the 1-minute schedule line at the bottom of the file with the following expression. Because cron cannot select the "3rd occurrence" of a weekday, this expression triggers every Friday at 12:31 AM and uses a  `date` command to ensure the script only executes if the day of the month is between the 15th and 21st:
 `31 0 * * 5 [ $(date +\%d) -ge 15 -a $(date +\%d) -le 21 ] && /home/os/9432-lab2/antivirus-cron.sh`
 
+## Bonus 2: Whitelist Feature
+A whitelist feature to protect specific files from being quarantined, even if they match flagged extensions or contain malicious keywords.
+
+**How it works:**
+1. A file named `whitelist.txt` is placed in the project directory (`/home/os/9432-lab2/whitelist.txt`).
+2. Before the scanning logic checks a file's extension or contents, the scripts read `whitelist.txt` line by line.
+3. If the current file's name matches an entry in the whitelist, the script sets an `is_whitelisted` flag and uses the `continue` command to immediately skip to the next file. 
+4. This logic is implemented in both the main `antivirusd.sh` daemon and the `antivirus-cron.sh` script.
+5. **Auto-Whitelisting on Restore:** When a file is restored from quarantine using option 1 in the `restore.sh` script, its filename is automatically appended to `whitelist.txt`. This ensures the restored file is whitelisted and will not be re-quarantined by the background scanners.
+
 
 
 
